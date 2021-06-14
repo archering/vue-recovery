@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello VUE</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+</head>
+<body>
+  
+    <div id="app">
+        <h2>v-if  v-for v-else v-show</h2>
+        <div v-if="show">
+            {{greet}}
+        </div>
+        <div v-else>
+            {{greet2}}
+        </div>
+        <div v-for="(item,index) in list">{{index}}  {{item}}</div>
+        <input type="text" v-model.number="num">
+        <div v-if="num === 1">
+            显示的是 num :{{ num}}
+        </div>
+        <div v-else-if="num === 2">
+            显示的是 num {{num * 2}}
+        </div>
+        <div v-else>{{num}}</div>
+        <div v-show="tool === '99'">
+            这里是v-show
+        </div>
+    </div>
+    <script>
+        new Vue({
+               el:"#app",
+               data:{
+                    show:true,
+                    greet:"hello world",
+                    greet2:"hello zd",
+                    list:["china","usa","kroen"],
+                    num:1,
+                    tool:"99"
+               } 
+        });
+    </script>
+</body>
+</html>

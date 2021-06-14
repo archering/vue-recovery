@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello VUE</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <style>
+        .abc{
+            width:100px;
+            height:100px;
+            border: 2px solid red;
+        }
+
+        .abc2 {
+            border:3px solid blue;
+        }
+
+    
+    </style>
+</head>
+<body>
+  
+    <div id="app">
+        <div>computed   methods    watch</div>
+        <div>
+            <input type="text"  v-model.number="paramOne">
+        </div>
+        <div>
+            your full name is : {{fullNname}}
+        </div>
+        <div>
+            10 + 100 = {{addAll}}
+        </div>
+        <p>再显示一次 {{fullNname}}</p>
+        <hr>
+        <div>
+            <div>methods  每次都执行， </div>
+            full name is {{fullNname2()}}
+        </div>
+
+        <hr>
+        watch 只能看监视 data内部定义的值,可以异步
+        <input type="text" v-model="fistName">
+    </div>
+    <script>
+        new Vue({
+               el:"#app",
+               data:{
+                    fistName:"dong",
+                    lastName: "zhang",
+                    paramOne: 10,
+                    paramTwo: 100
+               },
+               watch: {
+                   fistName : function (val,oldval) {
+                       console.log("new",val,"old",oldval);
+                   }
+               },
+               computed:{
+                  fullNname:function() {
+                      console.log("调用了computed");
+                        return this.lastName + ":" + this.fistName;
+                  },
+                  addAll: function() {
+                      return this.paramOne + this.paramTwo;
+                  }
+               },
+               methods: {
+                    fullNname2: function(){
+                        console.log("diaouyonle  method");
+                        return this.lastName + this.fistName;
+                    }
+               } 
+        });
+    </script>
+</body>
+</html>

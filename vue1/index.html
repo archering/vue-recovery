@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello VUE</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+</head>
+<body>
+  
+    <div id="app">
+        <h2>{{greeting}}</h2>
+        <h3 v-text="greeting"></h3>
+        <a v-bind:href="url + '?qe=121'">点我</a>
+        <input type="text" :value="name">
+    </div>
+    <script>
+        new Vue({
+               el:"#app",
+               data:{
+                    greeting:"Hello Vue",
+                    url:"http://baidu.com",
+                    name:"zhangdong"
+               } 
+        });
+    </script>
+</body>
+</html>

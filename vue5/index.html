@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello VUE</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <style>
+        .abc{
+            width:100px;
+            height:100px;
+            border: 2px solid red;
+        }
+
+        .abc2 {
+            border:3px solid blue;
+        }
+
+    
+    </style>
+</head>
+<body>
+  
+    <div id="app">
+        <div>v-bind: style  v-bind:class</div>
+        <div v-bind:style="{color:'red',width: '100px',height:'100px', backgroundColor:'blue'}">
+            hello world style
+        </div>
+        <div :style="[style1]">
+
+        </div>
+        <div :class="['abc','abc2']">
+          
+        </div>
+
+        <div :class='[classOne]'>
+
+        </div>
+        <div :class='classOne'>
+
+        </div>
+
+        <div :class="{abc: inside}" @mouseenter="enter()"  @mouseout="out()">
+            this is it
+        </div>
+ 
+    </div>
+    <script>
+        new Vue({
+               el:"#app",
+               data:{
+                enter_text:"你看到了我，通过enter 函数",
+                inside:true,
+                style1:{
+                    width:"200px",
+                    height:"200px",
+                    border:"1px solid red"
+                } ,
+                classOne:'abc',
+                classTwo: {
+                    width:"200px",
+                    height:"200px",
+                    'background-color':"green"
+                }      
+               },
+               methods: {
+                   showme: function () {
+                       alert(999);
+                   },
+                   alertme: function (val){
+                       alert("输入参数是"+val);
+                   },
+                   enter: function (){
+                    this.inside = true;
+                   },
+                   out:function () {
+                       this.inside = false;
+                   }
+               } 
+        });
+    </script>
+</body>
+</html>

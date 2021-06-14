@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello VUE</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+</head>
+<body>
+  
+    <div id="app">
+        <div> @click @mouseenter @mouseout</div>
+
+        <div>
+            <button v-on:click="alert(123)">click me</button>
+        </div>
+        <div>
+            没有参数的情况下可以不写（）
+            <button @click="showme">click me @</button>
+        </div>
+        <div>
+            有参数的必须写括号
+            <button @click="alertme(909898)">click me param</button>
+        </div>
+        <div @mouseenter="enter()" @mouseout="out()">
+            鼠标移入可以看到  
+            <p v-show="inside">{{enter_text}}</p>;
+        </div>
+        <div>
+            <input type="text" v-model.number="start">
+            <p>watch的另外一种写法</p>
+            <div>{{start}}</div>
+        </div>
+    </div>
+    <script>
+        new Vue({
+               el:"#app",
+               data:{
+                enter_text:"你看到了我，通过enter 函数",
+                inside:false,
+                start:1,
+                end:100
+               },
+               computed:{
+                  start_end:function(){
+                     // return {start:this.start,end:this.end};
+                     let newone = {start,end} = this;//结构赋值
+                     return newone;
+                  }
+               },
+               watch:{
+                 inside:function(){
+                     return "change";
+                 },
+                 start:{
+                    handler:function(){
+                         console.log("start changed");
+                    }
+                 },
+                 start_end:function(o){
+                     console.log(o.start,o.end);
+                 }
+               },
+               methods: {
+                   showme: function () {
+                       alert(999);
+                   },
+                   alertme: function (val){
+                       alert("输入参数是"+val);
+                   },
+                   enter: function (){
+                    this.inside = true;
+                   },
+                   out:function () {
+                       this.inside = false;
+                   }
+               } 
+        });
+    </script>
+</body>
+</html>
