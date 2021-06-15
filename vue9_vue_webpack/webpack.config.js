@@ -10,6 +10,11 @@ module.exports = {
         filename:"index.js",
         path:path.join(__dirname,'dist')
     },
+    devServer:{
+        contentBase: path.resolve(__dirname, 'dist'),
+        port:9090,
+        open: true
+    },
     module:{
         rules:[
             {
@@ -17,8 +22,13 @@ module.exports = {
                 loader:"vue-loader"
             },
             {
+                test:/\.js/,
+                loader:"babel-loader",
+                exclude: /node_modules/
+            },
+            {
                 test:/\.css$/,
-                loader:"css-loader"
+                use:["style-loader","css-loader"]
             }
         ]
     },

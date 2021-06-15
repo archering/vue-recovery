@@ -8,6 +8,6 @@ new Vue({
 
     },
     render:function(h){
-        h(App);
+        return h(App);
     }
 });
