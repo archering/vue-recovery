@@ -1,0 +1,15 @@
+{
+  "name": "vue10_vue_router",
+  "version": "1.0.0",
+  "description": "需要安装",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^2.6.14"
+  }
+}
